@@ -1,0 +1,16 @@
+version: "3"
+services:
+
+  nexus3:
+    image: "sonatype/nexus3:3.11.0"
+    ports:
+      - "8081:8081"
+    environment:
+      INSTALL4J_ADD_VM_PARAMS: |
+        -Xms1200m -Xmx1200m -XX:MaxDirectMemorySize=2g -Djava.util.prefs.userRoot=/nexus-data/javaprefs
+    volumes:
+      - nexusdata:/nexus-data
+
+volumes:
+  nexusdata:
+    driver: local
