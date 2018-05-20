@@ -1,0 +1,22 @@
+version: "3"
+services:
+
+  gitlab:
+    image: gitlab/gitlab-ce:10.7.3-ce.0
+    ports:
+      - '7990:80'
+      - '7991:7991'
+      - '4567:4567'
+    volumes:
+      - 'gitlabconfig:/etc/gitlab'
+      - 'gitlablogs:/var/log/gitlab'
+      - 'gitlabdata:/var/opt/gitlab'
+      
+      
+volumes:
+  gitlabconfig:
+    driver: local
+  gitlablogs:
+    driver: local
+  gitlabdata:
+    driver: local
