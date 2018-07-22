@@ -2,7 +2,7 @@ version: "3"
 
 services:
   sonarqube:
-    image: sonarqube:7.1-alpine
+    image: sonarqube:lts-alpine
     ports:
       - "9000:9000"
     environment:
@@ -24,7 +24,7 @@ services:
       - postgresql_data:/var/lib/postgresql/data
       
   nexus3:
-    image: "sonatype/nexus3:3.11.0"
+    image: "sonatype/nexus3:latest"
     ports:
       - "8081:8081"
     environment:
@@ -34,7 +34,7 @@ services:
       - nexusdata:/nexus-data
       
   jenkins:
-    image: jenkins/jenkins:lts
+    image: jenkins/jenkins:lts-alpine
     environment:
       JAVA_OPTS: |
         -Djenkins.branch.WorkspaceLocatorImpl.PATH_MAX=6 -Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Shanghai
